@@ -1,5 +1,6 @@
 ﻿using eTicketMvcApp.Data;
 using eTicketMvcApp.Data.Services;
+using eTicketMvcApp.Models;
 using Microsoft.AspNetCore.Mvc;
 
 namespace eTicketMvcApp.Controllers
@@ -16,6 +17,24 @@ namespace eTicketMvcApp.Controllers
         {
             var data = await _service.GetAll();
             return View(data);
+        }
+
+
+        //Get: Actors/Create
+        public IActionResult Create()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> Create([Bind("FullName,ProfilePictureURL,Bio")]Actor actor)
+        {
+            if (!ModelState.IsValid)
+            {
+                return View(actor);
+            }
+            _service.Add(actor);
+            return RedirectToAction(nameof(Index));
         }
     }
 }
