@@ -1,4 +1,5 @@
 ﻿
+using eTicketMvcApp.Models;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.ChangeTracking;
 
@@ -28,7 +29,9 @@ namespace eTicketMvcApp.Data.Base
 
         public async Task<IEnumerable<T>> GetAllAsync() => await _context.Set<T>().ToListAsync();
       
-        public async Task<T> GetByIdAsync(int id) => await _context.Set<T>().FirstOrDefaultAsync(n => n.ActorId == id); //Note ActorId
+        public async Task<T> GetByIdAsync(int id) => await _context.Set<T>().FirstOrDefaultAsync(n => n.ActorId == id && n.ProducerId == id); //Note ActorId
+
+        //public async Task<T> GetByIdAsync(int id) => await _context.Set<T>().FirstOrDefaultAsync(n => n.ProducerId == id);
 
         public async Task UpdateAsync(int id, T entity)
         {

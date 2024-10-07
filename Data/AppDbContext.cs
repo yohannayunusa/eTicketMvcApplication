@@ -25,6 +25,11 @@ namespace eTicketMvcApp.Data
             base.OnModelCreating(modelBuilder);
         }
 
+        //internal async Task<string?> GetByIdAsync(int id)
+        //{
+        //    throw new NotImplementedException();
+        //}
+
         public DbSet<Actor> Actors { get; set; }
 
         public DbSet<Movie> Movies { get; set; }

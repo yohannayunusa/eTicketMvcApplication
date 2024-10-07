@@ -7,6 +7,7 @@ namespace eTicketMvcApp.Models
     {
         [Key]
         public int  ActorId { get; set; }
+        public int ProducerId { get; set; }
 
         [Display(Name = "Profile Picture")]
         [Required(ErrorMessage = "ProfilePicture is required")]
@@ -23,5 +24,6 @@ namespace eTicketMvcApp.Models
 
         //Relationships
         public List<Actor_Movie> Actors_Movies { get; set; }
+        //public int ProducerId { get; set; }
     }
 }
